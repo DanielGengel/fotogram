@@ -1,36 +1,83 @@
-const gallery = document.getElementById("myPhotoGallery");
-const title = document.getElementById("myPhotoGalleryTitle");
+// TODO: add array for picture alt text...
+
+const photoGallery = document.getElementById("myPhotoGallery");
+const photoGalleryTitle = document.getElementById("myPhotoGalleryTitle");
+const lightbox = document.getElementById("lightboxID");
+const lightboxImageCaption = document.getElementById("lightboxImageCaptionID");
+const lightboxImage = document.getElementById("lightboxImageID");
+const btnPrevImage = document.getElementById("buttonPrevImage");
+const btnNextImage = document.getElementById("buttonNextImage");
+const btnCloseLightbox = document.getElementById("buttonCloseLightbox");
+
+let indexForLightboxImage = 0;
 
 const myImages = [
-    "Spain01.jpeg",
-    "Spain02.jpeg",
-    "Spain03.jpeg",
-    "Spain04.jpeg",
-    "Spain05.jpeg",
-    "Spain06.jpeg",
-    "Spain07.jpeg",
-    "Spain08.jpeg",
-    "Spain09.jpeg",
-    "Spain10.jpeg",
-    "Spain11.jpeg",
-    "Spain12.jpeg",
-    "Spain13.jpeg",
-    "Spain14.jpeg",
-    "Spain15.jpeg",
-    "Spain16.jpeg",
+    { imageFileName: "Spain01.jpeg", imageCaption: "Image from Sevilla, Spain" },
+    { imageFileName: "Spain02.jpeg", imageCaption: "Image from Ronda, Spain" },
+    { imageFileName: "Spain03.jpeg", imageCaption: "Image from Ronda, Spain" },
+    { imageFileName: "Spain04.jpeg", imageCaption: "Image from Ronda, Spain" },
+    { imageFileName: "Spain05.jpeg", imageCaption: "Image from Ronda, Spain" },
+    { imageFileName: "Spain06.jpeg", imageCaption: "Image from Malaga, Spain" },
+    { imageFileName: "Spain07.jpeg", imageCaption: "Image from Murcia, Spain" },
+    { imageFileName: "Spain08.jpeg", imageCaption: "Image from Spain" },
+    { imageFileName: "Spain09.jpeg", imageCaption: "Image from Torre del mar, Spain" },
+    { imageFileName: "Spain10.jpeg", imageCaption: "Image from Spain" },
+    { imageFileName: "Spain11.jpeg", imageCaption: "Image from Bilbao, Spain" },
+    { imageFileName: "Spain12.jpeg", imageCaption: "Image from Bilbao, Spain" },
+    { imageFileName: "Spain13.jpeg", imageCaption: "Image from Bilbao, Spain" },
+    { imageFileName: "Spain14.jpeg", imageCaption: "Image from Northern Spain" },
+    { imageFileName: "Spain15.jpeg", imageCaption: "Image from Northern Spain" },
+    { imageFileName: "Spain16.jpeg", imageCaption: "Image from Northern Spain" },
 ];
 
-function showGallery() {
 
-    title.innerHTML = "<h1>My Photo Gallery</h1>";
-    let html = "";
+
+
+
+function showGallery() {
+    photoGalleryTitle.innerHTML = "<h1>My Photo Gallery</h1>";
+    photoGallery.innerHTML = "";
 
     for (let i = 0; i < myImages.length; i++) {
-        html += `
-            <img src="../assets/images/Spain/${myImages[i]}" alt="Bild">
+        photoGallery.innerHTML += `
+            <img src="../assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}" onclick="openLightbox(${i})">
         `;
     }
+}
 
-    
-    gallery.innerHTML = html;
+// Events zuweisen
+btnPrevImage.addEventListener("click", showPrevImage);
+btnNextImage.addEventListener("click", showNextImage);
+btnCloseLightbox.addEventListener("click", closeLightbox);
+
+function openLightbox(index) {
+    // Which picture was clicked at?
+    indexForLightboxImage = index;
+
+    // Path to clicked picture
+    imageToShow(indexForLightboxImage);
+    // Show lightbox
+    lightbox.style.display = "flex";
+}
+
+function showNextImage() {
+    // console.log(document.getElementById("lightboxImageID"));
+    indexForLightboxImage = (indexForLightboxImage + 1) % myImages.length;
+    imageToShow(indexForLightboxImage);
+}
+
+function showPrevImage() {
+    // console.log(document.getElementById("lightboxImageID"));
+    indexForLightboxImage = (indexForLightboxImage - 1 + myImages.length) % myImages.length;
+    imageToShow(indexForLightboxImage);
+}
+
+function imageToShow(index) {
+    lightboxImage.src = `../assets/images/Spain/${myImages[index].imageFileName}`;
+    lightboxImage.setAttribute("alt", `${myImages[index].imageCaption}`);
+    lightboxImageCaption.textContent = `${myImages[index].imageCaption}`;
+}
+
+function closeLightbox() {
+    lightbox.style.display = "none";
 }

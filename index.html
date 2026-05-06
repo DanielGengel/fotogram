@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="de">
     <head>
         <meta charset="UTF-8" />
@@ -18,8 +18,25 @@
             <section class="content">
                 <div id="myPhotoGalleryTitle"></div>
                 <div id="myPhotoGallery"></div>
+                <div class="lightboxOverlay" id="lightboxID">
+                    <div class="lightbox">
+                        <header class="lightboxHeader">
+                            <h2 id="lightboxImageCaptionID"></h2>
+                            <button id="buttonCloseLightbox">❌</button>
+                        </header>
+                        <div class="lightboxBody">
+                            <img id="lightboxImageID" src="" alt="" />
+                        </div>
+                        <footer class="lightboxFooter">
+                            <nav class="lightboxNavigation">
+                                <button id="buttonPrevImage">←</button>
+                                <button id="buttonNextImage">→</button>
+                            </nav>
+                        </footer>
+                    </div>
+                </div>
             </section>
         </main>
-        <footer></footer>
+        <footer class="mainFooter"></footer>
     </body>
 </html>
