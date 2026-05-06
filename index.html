@@ -1,19 +1,25 @@
-<!DOCTYPE html>
+ <!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js"></script>
-    <title>Fotogram</title>
-</head>
-<body>
-    <header></header>
-    <main>
-
-
-    </main>
-    <footer></footer>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/fonts.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="./js/script.js" defer></script>
+        <title>Fotogram</title>
+    </head>
+    <body onload="showGallery()">
+        <header>
+            <div class="header-content">
+                <img src="./assets/icons/header-icon.png" alt="Fotogram Header Icon" />
+            </div>
+        </header>
+        <main>
+            <section class="content">
+                <div id="myPhotoGalleryTitle"></div>
+                <div id="myPhotoGallery"></div>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
 </html>
