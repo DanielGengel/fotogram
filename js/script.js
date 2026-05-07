@@ -13,22 +13,22 @@ const btnCloseLightbox = document.getElementById("buttonCloseLightbox");
 let indexForLightboxImage = 0;
 
 const myImages = [
-    { imageFileName: "Spain01.jpeg", imageCaption: "Image from Sevilla, Spain" },
-    { imageFileName: "Spain02.jpeg", imageCaption: "Image from Ronda, Spain" },
-    { imageFileName: "Spain03.jpeg", imageCaption: "Image from Ronda, Spain" },
-    { imageFileName: "Spain04.jpeg", imageCaption: "Image from Ronda, Spain" },
-    { imageFileName: "Spain05.jpeg", imageCaption: "Image from Ronda, Spain" },
-    { imageFileName: "Spain06.jpeg", imageCaption: "Image from Malaga, Spain" },
-    { imageFileName: "Spain07.jpeg", imageCaption: "Image from Murcia, Spain" },
-    { imageFileName: "Spain08.jpeg", imageCaption: "Image from Spain" },
-    { imageFileName: "Spain09.jpeg", imageCaption: "Image from Torre del mar, Spain" },
-    { imageFileName: "Spain10.jpeg", imageCaption: "Image from Spain" },
-    { imageFileName: "Spain11.jpeg", imageCaption: "Image from Bilbao, Spain" },
-    { imageFileName: "Spain12.jpeg", imageCaption: "Image from Bilbao, Spain" },
-    { imageFileName: "Spain13.jpeg", imageCaption: "Image from Bilbao, Spain" },
-    { imageFileName: "Spain14.jpeg", imageCaption: "Image from Northern Spain" },
-    { imageFileName: "Spain15.jpeg", imageCaption: "Image from Northern Spain" },
-    { imageFileName: "Spain16.jpeg", imageCaption: "Image from Northern Spain" },
+    { imageFileName: "Spain01.webp", imageCaption: "Image from Sevilla, Spain" },
+    { imageFileName: "Spain02.webp", imageCaption: "City view from Ronda, Spain" },
+    { imageFileName: "Spain03.webp", imageCaption: "Landscape view from Ronda, Spain" },
+    { imageFileName: "Spain04.webp", imageCaption: "Bridge view, Ronda, Spain" },
+    { imageFileName: "Spain05.webp", imageCaption: "Image from Ronda, Spain" },
+    { imageFileName: "Spain06.webp", imageCaption: "Image from Malaga, Spain" },
+    { imageFileName: "Spain07.webp", imageCaption: "Image from Murcia, Spain" },
+    { imageFileName: "Spain08.webp", imageCaption: "Image from a river in Spain" },
+    { imageFileName: "Spain09.webp", imageCaption: "Image from Torre del Mar, Spain" },
+    { imageFileName: "Spain10.webp", imageCaption: "Image from a White Village in Spain" },
+    { imageFileName: "Spain11.webp", imageCaption: "Image from a Bridge in Bilbao, Spain" },
+    { imageFileName: "Spain12.webp", imageCaption: "Image from Bilbao, Spain" },
+    { imageFileName: "Spain13.webp", imageCaption: "Image from Guggenheim Museum Bilbao, Spain" },
+    { imageFileName: "Spain14.webp", imageCaption: "Image ocean view Northern Spain" },
+    { imageFileName: "Spain15.webp", imageCaption: "Image from Northern Spain" },
+    { imageFileName: "Spain16.webp", imageCaption: "Image beach view Northern Spain" },
 ];
 
 function showGallery() {
@@ -37,10 +37,13 @@ function showGallery() {
 
     for (let i = 0; i < myImages.length; i++) {
         photoGallery.innerHTML += `
-            <img src="../assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}" onclick="openLightbox(${i})">
+            <button class="galleryImageButton" onclick="openLightbox(${i})" aria-label="Open ${myImages[i].imageCaption}"><img src="./assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}">
+    </button>
         `;
     }
 }
+
+
 
 // Add functions to buttons
 btnPrevImage.addEventListener("click", showPrevImage);
@@ -93,7 +96,7 @@ function showPrevImage() {
 }
 
 function imageToShow() {
-    lightboxImage.src = `../assets/images/Spain/${myImages[indexForLightboxImage].imageFileName}`;
+    lightboxImage.src = `./assets/images/Spain/${myImages[indexForLightboxImage].imageFileName}`;
     lightboxImage.setAttribute("alt", `${myImages[indexForLightboxImage].imageCaption}`);
     lightboxImageCaption.textContent = `${myImages[indexForLightboxImage].imageCaption}`;
     lightboxImageCounter.textContent = `${indexForLightboxImage + 1}/${myImages.length}`;

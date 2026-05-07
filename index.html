@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.png"/>
         <link rel="stylesheet" href="./css/fonts.css" />
         <link rel="stylesheet" href="./css/style.css" />
         <script src="./js/script.js" defer></script>
@@ -18,20 +19,20 @@
             <section class="content">
                 <div id="myPhotoGalleryTitle"></div>
                 <div id="myPhotoGallery"></div>
-                <div class="lightboxOverlay" id="lightboxID">
+                <div class="lightboxOverlay" id="lightboxID" role="dialog" aria-modal="true" aria-labelledby="lightboxImageCaptionID">
                     <div class="lightbox">
                         <header class="lightboxHeader">
-                            <h2 id="lightboxImageCaptionID"></h2>
-                            <button id="buttonCloseLightbox">❌</button>
+                            <h2 id="lightboxImageCaptionID">Image Caption</h2>
+                            <button id="buttonCloseLightbox" aria-label="Close lightbox">❌</button>
                         </header>
                         <div class="lightboxBody">
-                            <img id="lightboxImageID" src="" alt="" />
+                            <img id="lightboxImageID" src="" alt="Gallery picture" aria-describedby="lightboxImageCaptionID" />
                         </div>
                         <footer class="lightboxFooter">
                             <nav class="lightboxNavigation">
-                                <button id="buttonPrevImage">←</button>
+                                <button id="buttonPrevImage" aria-label="Show previous image">←</button>
                                 <span id="lightboxImageCounterID"></span>
-                                <button id="buttonNextImage">→</button>
+                                <button id="buttonNextImage" aria-label="Show next image">→</button>
                             </nav>
                         </footer>
                     </div>
