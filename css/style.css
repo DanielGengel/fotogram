@@ -36,12 +36,11 @@ body {
     }
 
     main {
-        /* flex: 1 0 auto; */
-        /* flex: 1; */
-        /* display: flex; */
+        /* To keep the footer at the bottom of the screen */
+        flex: 1;
 
         .content {
-            /* flex: 1; */
+ 
 
             max-width: 1440px;
             width: 100%;

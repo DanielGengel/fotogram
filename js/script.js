@@ -63,10 +63,16 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// Close window when clicked outside lightbox
+lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+});
+
 function openLightbox(index) {
     // Which picture was clicked at?
     indexForLightboxImage = index;
-
     // Path to clicked picture
     imageToShow(indexForLightboxImage);
     // Show lightbox
@@ -98,10 +104,5 @@ function closeLightbox() {
     lightbox.style.display = "none";
 }
 
-// Close window when clicked outside lightbox
-lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-});
+
 
