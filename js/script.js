@@ -32,9 +32,11 @@ const myImages = [
 ];
 
 function showGallery() {
-    photoGalleryTitle.innerHTML = "<h1>My Photo Gallery</h1>";
+    photoGalleryTitle.textContent = "My Photo Gallery";
     photoGallery.innerHTML = "";
 
+    // Create a button with an image inside it, to open the image in the lighbox "onClick" 
+    // and add it to the gallery. Set aria-lable and alt-text to imageCaption.
     for (let i = 0; i < myImages.length; i++) {
         photoGallery.innerHTML += `
             <button class="galleryImageButton" onclick="openLightbox(${i})" aria-label="Open ${myImages[i].imageCaption}"><img src="./assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}">
@@ -76,7 +78,7 @@ function openLightbox(index) {
     // Path to clicked picture
     imageToShow(indexForLightboxImage);
     // Show lightbox
-    lightbox.style.display = "flex";
+    lightbox.showModal();
 }
 
 function showNextImage() {
@@ -94,6 +96,7 @@ function showPrevImage() {
 }
 
 function imageToShow() {
+    // Set image source, image alt text, image caption and update image counter
     lightboxImage.src = `./assets/images/Spain/${myImages[indexForLightboxImage].imageFileName}`;
     lightboxImage.setAttribute("alt", `${myImages[indexForLightboxImage].imageCaption}`);
     lightboxImageCaption.textContent = `${myImages[indexForLightboxImage].imageCaption}`;
@@ -101,7 +104,7 @@ function imageToShow() {
 }
 
 function closeLightbox() {
-    lightbox.style.display = "none";
+    lightbox.close();
 }
 
 

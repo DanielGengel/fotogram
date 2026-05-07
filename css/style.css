@@ -20,13 +20,13 @@ body {
     display: flex;
     flex-direction: column;
 
-    header {
+    .mainHeader {
         height: 80px;
         background-color: #09212a;
         display: flex;
         align-items: center;
 
-        .header-content {
+        .headerContent {
             max-width: 1440px;
             width: 100%;
             margin-left: auto;
@@ -40,8 +40,6 @@ body {
         flex: 1;
 
         .content {
- 
-
             max-width: 1440px;
             width: 100%;
             margin: 0 auto;
@@ -62,13 +60,9 @@ body {
                 align-items: center;
                 justify-content: center;
 
-                h1 {
-                    font-size: clamp(2rem, 5vw, 6rem);
-                    color: antiquewhite;
-                    /* margin-top: 5%;
-                    margin-bottom: 5%; */
-                    text-align: center;
-                }
+                font-size: clamp(2rem, 5vw, 6rem);
+                color: antiquewhite;
+                text-align: center;
             }
             #myPhotoGallery {
                 display: flex;
@@ -93,13 +87,35 @@ body {
                 }
             }
 
-            .lightboxOverlay {
-                display: none;
+            /* START of Lightbox Dialog */
+            dialog {
+                padding: 0;
+                border: none;
+                background: transparent;
 
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                max-height: none;
+            }
+
+            dialog::backdrop {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            dialog[open] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 20px;
+            }
+
+            .lightboxOverlay {
+                /* display: none;
                 position: fixed;
                 inset: 0;
-
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: rgba(0, 0, 0, 0.8); */
 
                 justify-content: center;
                 align-items: center;
@@ -131,7 +147,7 @@ body {
 
                         padding: 20px;
 
-                        h2 {
+                        figcaption {
                             color: antiquewhite;
                             font-size: clamp(1.5rem, 3vw, 4rem);
                             text-align: left;
@@ -196,7 +212,7 @@ body {
                                 background-color: rgba(24, 81, 102, 0.5);
                                 color: rgb(226, 53, 53);
                                 font-size: 36px;
-                                border: none;
+                                border: 1px solid transparent;
                                 border-radius: 50%;
                                 cursor: pointer;
                                 transition:
@@ -204,17 +220,13 @@ body {
                                     transform 0.2s;
                             }
                         }
-                        .lighboxNavigation button:hover {
-                            transform: scale(1.1);
-                            border: 2px solid white;
-                        }
-
-                        .lighboxNavigation:hover button {
+                        .lightboxNavigation button:hover {
+                            border: 1px solid white;
                             background-color: rgba(255, 255, 255, 0.2);
                         }
                     }
                 }
-            }
+            } /* END of Lightbox Dialog */
         }
     }
     .mainFooter {
@@ -257,8 +269,8 @@ body {
 
 @media (max-width: 1024px) {
     body {
-        header {
-            .header-content {
+        .mainHeader {
+            .headerContent {
                 display: flex;
                 justify-content: center;
                 padding-left: 0;

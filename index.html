@@ -10,35 +10,24 @@
         <title>Fotogram</title>
     </head>
     <body onload="showGallery()">
-        <header>
-            <div class="header-content">
+        <header class="mainHeader">
+            <div class="headerContent">
                 <img src="./assets/icons/header-icon.png" alt="Fotogram Header Icon" />
             </div>
         </header>
         <main>
             <section class="content">
-                <div id="myPhotoGalleryTitle"></div>
+                <h1 id="myPhotoGalleryTitle"></h1>
                 <div id="myPhotoGallery"></div>
-                <div
-                    class="lightboxOverlay"
-                    id="lightboxID"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby="lightboxImageCaptionID"
-                >
+                <dialog class="lightboxOverlay" id="lightboxID" role="dialog" aria-labelledby="lightboxImageCaptionID">
                     <div class="lightbox">
                         <header class="lightboxHeader">
-                            <h2 id="lightboxImageCaptionID">Image Caption</h2>
+                            <figcaption id="lightboxImageCaptionID">Image Caption</figcaption>
                             <button id="buttonCloseLightbox" aria-label="Close lightbox">❌</button>
                         </header>
-                        <div class="lightboxBody">
-                            <img
-                                id="lightboxImageID"
-                                src=""
-                                alt="Gallery picture"
-                                aria-describedby="lightboxImageCaptionID"
-                            />
-                        </div>
+                        <figure class="lightboxBody">
+                            <img id="lightboxImageID" src="" alt="Gallery picture" aria-describedby="lightboxImageCaptionID"/>
+                        </figure>
                         <footer class="lightboxFooter">
                             <nav class="lightboxNavigation">
                                 <button id="buttonPrevImage" aria-label="Show previous image">←</button>
@@ -47,7 +36,7 @@
                             </nav>
                         </footer>
                     </div>
-                </div>
+                </dialog>
             </section>
         </main>
         <footer class="mainFooter">©️ Daniel Gengel</footer>
