@@ -43,14 +43,10 @@ function showGallery() {
     }
 }
 
-
-
 // Add functions to buttons
 btnPrevImage.addEventListener("click", showPrevImage);
 btnNextImage.addEventListener("click", showNextImage);
 btnCloseLightbox.addEventListener("click", closeLightbox);
-
-
 
 // Navigation with arrow keyboard keys and escape to close the Lightbox.
 document.addEventListener("keydown", (event) => {
@@ -63,7 +59,7 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (event.key === "Escape") {
-        closeLightbox(); 
+        closeLightbox();
     }
 });
 
@@ -79,8 +75,6 @@ function openLightbox(index) {
 
 function showNextImage() {
     // console.log(document.getElementById("lightboxImageID"));
-    // indexForLightboxImage = (indexForLightboxImage + 1) % myImages.length;
-    // imageToShow(indexForLightboxImage);
     indexForLightboxImage++;
     if (indexForLightboxImage >= myImages.length) indexForLightboxImage = 0;
     imageToShow();
@@ -88,8 +82,6 @@ function showNextImage() {
 
 function showPrevImage() {
     // console.log(document.getElementById("lightboxImageID"));
-    // indexForLightboxImage = (indexForLightboxImage - 1 + myImages.length) % myImages.length;
-    // imageToShow(indexForLightboxImage);
     indexForLightboxImage--;
     if (indexForLightboxImage < 0) indexForLightboxImage = myImages.length - 1;
     imageToShow();
@@ -112,3 +104,4 @@ lightbox.addEventListener("click", (event) => {
         closeLightbox();
     }
 });
+
