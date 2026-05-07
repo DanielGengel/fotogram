@@ -37,7 +37,7 @@ function showGallery() {
     // and add it to the gallery. Set aria-lable and alt-text to imageCaption.
     for (let i = 0; i < myImages.length; i++) {
         photoGallery.innerHTML += `
-            <button class="galleryImageButton" onclick="openLightbox(${i})" aria-label="Open ${myImages[i].imageCaption}"><img src="./assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}">
+            <button class="galleryImageButton" onclick="openLightbox(${i})" aria-label="Open ${myImages[i].imageCaption}"><img src="./assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}" loading="lazy">
     </button>
         `;
     }
