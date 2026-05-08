@@ -13,6 +13,10 @@
     border: initial;
 }
 
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
 body {
     font-family: "Economica";
     background-color: #06171e;
@@ -55,10 +59,7 @@ body {
             justify-content: center;
             align-items: center;
             gap: 32px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 24px;
-            padding-bottom: 24px;
+            padding: 20px 35px;
 
             #myPhotoGalleryTitle {
                 display: flex;
@@ -114,6 +115,11 @@ body {
                 justify-content: center;
                 align-items: center;
 
+                /* Dialog fixed to not move scrollbar to top */
+                position: fixed;
+                inset: 50% auto auto 50%;
+                transform: translate(-50%, -50%);
+
                 padding: 20px;
             }
 
@@ -134,19 +140,34 @@ body {
                         min-height: 80px;
                         display: flex;
                         align-items: center;
-                        justify-content: space-between;
+                        justify-content: flex-start;
                         padding: 20px;
+                        padding-right: 80px;
 
                         figcaption {
                             color: antiquewhite;
                             font-size: clamp(1.5rem, 3vw, 4rem);
-                            text-align: left;
                         }
 
                         #buttonCloseLightbox {
+                            position: absolute;
+                            top: 20px;
+                            right: 20px;
+                            z-index: 10;
                             font-size: 20px;
                             cursor: pointer;
-                            /* padding: 10px; */
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            background-color: rgba(255, 255, 255, 0.1);
+                            transition:
+                                background-color 0.2s,
+                                transform 0.2s;
+                        }
+
+                        #buttonCloseLightbox:hover {
+                            background-color: rgba(255, 255, 255, 0.2);
+                            transform: scale(1.1);
                         }
                     }
 
@@ -278,17 +299,17 @@ body {
 @media (min-width: 1500px) {
     body {
         main {
-        .content {
-            #myPhotoGalleryTitle {
-                   
+            .content {
+                #myPhotoGalleryTitle {
                     padding-bottom: 50px;
                 }
-            #myPhotoGallery {
+                #myPhotoGallery {
                     img {
                         width: 250px;
                         height: 250px;
                     }
                 }
-        }}
+            }
+        }
     }
 }

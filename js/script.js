@@ -37,7 +37,13 @@ function showGallery() {
     // and add it to the gallery. Set aria-lable and alt-text to imageCaption.
     for (let i = 0; i < myImages.length; i++) {
         photoGallery.innerHTML += `
-            <button class="galleryImageButton" onclick="openLightbox(${i})" aria-label="Open ${myImages[i].imageCaption}"><img src="./assets/images/Spain/${myImages[i].imageFileName}" alt="${myImages[i].imageCaption}">
+            <button class="galleryImageButton" 
+            onclick="openLightbox(${i})" 
+            aria-label="Open ${myImages[i].imageCaption}">
+            <img src="./assets/images/Spain/400/${myImages[i].imageFileName}" 
+            srcset="./assets/images/Spain/400/${myImages[i].imageFileName} 400w"
+            width="160" height="160" loading="lazy"
+            alt="${myImages[i].imageCaption}">
     </button>
         `;
     }
@@ -80,14 +86,12 @@ function openLightbox(index) {
 }
 
 function showNextImage() {
-    // console.log(document.getElementById("lightboxImageID"));
     indexForLightboxImage++;
     if (indexForLightboxImage >= myImages.length) indexForLightboxImage = 0;
     imageToShow();
 }
 
 function showPrevImage() {
-    // console.log(document.getElementById("lightboxImageID"));
     indexForLightboxImage--;
     if (indexForLightboxImage < 0) indexForLightboxImage = myImages.length - 1;
     imageToShow();
@@ -95,7 +99,7 @@ function showPrevImage() {
 
 function imageToShow() {
     // Set image source, image alt text, image caption and update image counter
-    lightboxImage.src = `./assets/images/Spain/${myImages[indexForLightboxImage].imageFileName}`;
+    lightboxImage.src = `./assets/images/Spain/1024/${myImages[indexForLightboxImage].imageFileName}`;
     lightboxImage.setAttribute("alt", `${myImages[indexForLightboxImage].imageCaption}`);
     lightboxImageCaption.textContent = `${myImages[indexForLightboxImage].imageCaption}`;
     lightboxImageCounter.textContent = `${indexForLightboxImage + 1}/${myImages.length}`;
@@ -103,6 +107,7 @@ function imageToShow() {
 
 function closeLightbox() {
     lightbox.close();
+    lightboxImage.src = "";
 }
 
 
